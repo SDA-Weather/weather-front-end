@@ -1,4 +1,4 @@
-<h3>Favorite locations:</h3>
+<h3>Favorite locations</h3>
 <div>
   <div *ngIf="authService.isLoggedIn()">
     <div *ngIf="favoriteLocations">
@@ -14,7 +14,7 @@
         </ng-container>
 
         <ng-container matColumnDef="conditionCode">
-          <th *matHeaderCellDef mat-header-cell>Condition</th>
+          <th *matHeaderCellDef mat-header-cell></th>
           <td *matCellDef="let element" mat-cell><img src='{{ "assets/images/" + element.conditionCode + ".svg" }}'></td>
         </ng-container>
 

@@ -3,10 +3,19 @@ h3 {
   text-align: center;
 }
 
+p {
+  text-align: center;
+  color: crimson;
+}
+
 table {
   margin: auto;
   max-width: 1024px;
   width: 100%;
+}
+
+table th:nth-child(3) {
+  width: 100px;
 }
 
 table th:last-child{
@@ -23,5 +32,5 @@ img {
 }
 
 .mat-row:hover {
-  background-color: lightgrey;
+  background-color: lemonchiffon;
 }
