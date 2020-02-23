@@ -1,0 +1,17 @@
+<div class="content">
+  <h2>Login required!</h2>
+  <div>
+    <mat-form-field>
+      <input [(ngModel)]="email" autocomplete="off" matInput placeholder="Email">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input [(ngModel)]="password" matInput placeholder="Password" type="Password">
+    </mat-form-field>
+  </div>
+  <div>
+    <button (click)="reset()" mat-button>Reset</button>
+    <button (click)="login()" color="primary" mat-raised-button>Login</button>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<h3>Location: {{locationWeatherData?.location?.name}}</h3>
+
+<table [dataSource]="locationWeatherData?.weatherData" class="mat-elevation-z8" mat-table>
+  <ng-container matColumnDef="no">
+    <th *matHeaderCellDef mat-header-cell> No.</th>
+    <td *matCellDef="let index = index" mat-cell> {{index + 1}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="forecastTimeUtc">
+    <th *matHeaderCellDef mat-header-cell> Forecast time</th>
+    <td *matCellDef="let element" mat-cell> {{element.forecastTimeUtc}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="conditionCode">
+    <th *matHeaderCellDef mat-header-cell></th>
+    <td *matCellDef="let element" mat-cell><img src='{{ "assets/images/" + element.conditionCode + ".svg" }}'></td>
+  </ng-container>
+
+  <ng-container matColumnDef="airTemperature">
+    <th *matHeaderCellDef mat-header-cell> Air temperature</th>
+    <td *matCellDef="let element" mat-cell> {{element.airTemperature}} °C</td>
+  </ng-container>
+
+  <ng-container matColumnDef="windSpeed">
+    <th *matHeaderCellDef mat-header-cell> Wind speed</th>
+    <td *matCellDef="let element" mat-cell> {{element.windSpeed}} m/s</td>
+  </ng-container>
+
+  <ng-container matColumnDef="windGust">
+    <th *matHeaderCellDef mat-header-cell> Wind gust</th>
+    <td *matCellDef="let element" mat-cell> {{element.windGust}} m/s</td>
+  </ng-container>
+
+  <ng-container matColumnDef="windDirection">
+    <th *matHeaderCellDef mat-header-cell> Wind direction</th>
+    <td *matCellDef="let element" mat-cell> {{element.windDirection}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="cloudCover">
+    <th *matHeaderCellDef mat-header-cell> Cloud cover</th>
+    <td *matCellDef="let element" mat-cell> {{element.cloudCover}} %</td>
+  </ng-container>
+
+  <ng-container matColumnDef="seaLevelPressure">
+    <th *matHeaderCellDef mat-header-cell> Sea level pressure</th>
+    <td *matCellDef="let element" mat-cell> {{element.seaLevelPressure}} hPa</td>
+  </ng-container>
+
+  <ng-container matColumnDef="totalPrecipitation">
+    <th *matHeaderCellDef mat-header-cell> Total precipitation</th>
+    <td *matCellDef="let element" mat-cell> {{element.totalPrecipitation}} mm</td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>

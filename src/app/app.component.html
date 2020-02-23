@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <img
+    alt="Weather Logo"
+    src="https://files.slack.com/files-pri/TKR3URMPD-FTDNTFMCK/sunicon.png"
+  />
+  <h2 routerLink="homepage">WEATHER HOMEPAGE</h2>
+  <button mat-button routerLink="locations">
+    <mat-icon>place</mat-icon>
+    <span> Locations </span>
+  </button>
+  <button *ngIf="!authService.isLoggedIn()" class="login-button" mat-button routerLink="login">
+    <mat-icon>home</mat-icon>
+    <span> Login </span>
+  </button>
+  <button (click)="logout()" *ngIf="authService.isLoggedIn()" class="logout-button" mat-button>
+    <mat-icon>home</mat-icon>
+    <span> Logout </span>
+  </button>
+</mat-toolbar>
+<router-outlet></router-outlet>

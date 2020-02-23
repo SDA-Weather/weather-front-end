@@ -1,0 +1,8 @@
+div.content {
+  margin-top: 30px;
+  text-align: center;
+}
+
+div > div:last-child > button {
+  margin: 6px;
+}

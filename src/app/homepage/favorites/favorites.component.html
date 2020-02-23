@@ -1,0 +1,67 @@
+<h3>Favorite locations:</h3>
+<div>
+  <div *ngIf="authService.isLoggedIn()">
+    <div *ngIf="favoriteLocations">
+      <table [dataSource]="favoriteLocations" class="mat-elevation-z8" mat-table>
+        <ng-container matColumnDef="no">
+          <th *matHeaderCellDef mat-header-cell> No.</th>
+          <td *matCellDef="let index = index" mat-cell> {{index + 1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="locationName">
+          <th *matHeaderCellDef mat-header-cell>Location</th>
+          <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="conditionCode">
+          <th *matHeaderCellDef mat-header-cell>Condition</th>
+          <td *matCellDef="let element" mat-cell><img src='{{ "assets/images/" + element.conditionCode + ".svg" }}'></td>
+        </ng-container>
+
+        <ng-container matColumnDef="temperature">
+          <th *matHeaderCellDef mat-header-cell>Temperature</th>
+          <td *matCellDef="let element" mat-cell> {{element.airTemperature}} °C</td>
+        </ng-container>
+
+        <ng-container matColumnDef="windSpeed">
+          <th *matHeaderCellDef mat-header-cell>Wind Speed</th>
+          <td *matCellDef="let element" mat-cell> {{element.windSpeed}} m/s</td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalPrecipitation">
+          <th *matHeaderCellDef mat-header-cell>Total Precipitation</th>
+          <td *matCellDef="let element" mat-cell> {{element.totalPrecipitation}} mm</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th *matHeaderCellDef mat-header-cell>
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            <button [matMenuTriggerFor]="menu" mat-icon-button>
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button [routerLink]="['/locations', element.id]" mat-menu-item>
+                <mat-icon>list_alt</mat-icon>
+                <span>Details</span>
+              </button>
+              <button (click)="delete(element.id)" mat-menu-item>
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+      </table>
+    </div>
+    <div *ngIf="!favoriteLocations">
+      You currently have no favorites. Head to <a href="" [routerLink]="['/locations']">Locations</a> table and pick your favorite locations!
+    </div>
+  </div>
+  <div *ngIf="!authService.isLoggedIn()">
+    <p>Please login to manage your favorites!</p>
+    <img src="https://static.thenounproject.com/png/75190-200.png">
+  </div>
+</div>
